@@ -9,8 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CreatorUIObjects : UIViewController
+@interface CreatorUIObjects : NSObject
 
++ (UILabel *)createCustomLabelWithText:(NSString *)textLabel;
++ (UILabel *)createCustomLabelFlag;
++ (UIButton *)createCustomButtonWithText:(NSString *)textButton;
++ (UITextField *)createCustomTextFieldWithText:(NSString *)textField;
 @end
 
 NS_ASSUME_NONNULL_END

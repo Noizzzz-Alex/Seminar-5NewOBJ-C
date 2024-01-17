@@ -12,9 +12,10 @@
 
 @property (nonatomic, strong) Loader *loader;
 
-@property (nonatomic) NSString *log;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIButton *button;
+
+-(void)buttonTapped;
 
 -(void)performLoadingForGetRequest;
 -(void)performLoadingForPostRequest;
