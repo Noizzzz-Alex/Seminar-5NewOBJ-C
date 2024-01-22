@@ -9,20 +9,19 @@
 #import "Loader.h"
 //#import "ColorTile.h"
 
-@interface MainViewController : UIViewController
-
-@property (nonatomic, strong) Loader *loader;
-//@property (nonatomic, strong) ColorTile *loader;
-
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) UIButton *button;
-
--(void)buttonTapped;
-
--(void)performLoadingForGetRequest;
--(void)performLoadingForPostRequest;
+@interface MainViewController : UIViewController <UITextFieldDelegate>
 
 
+@property (nonatomic, strong) UILabel *labelFlag;
+@property (nonatomic, strong) UIButton *buttonSaveToUserDefaults;
+@property (nonatomic, strong) UIButton *buttonSaveToFile;
+@property (nonatomic, strong) UITextField *textField;
+
+-(void)buttonSaveToFileTapped;
+-(void)buttonSaveToUserDefaultsTapped;
+
+-(void)saveDataToUserDefaults;
+-(void)saveDataToFile:(NSString*)fileName;
 
 @end
 

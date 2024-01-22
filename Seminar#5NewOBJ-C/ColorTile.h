@@ -9,13 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ColorTile : NSObject <NSCoding>
-
+@interface ColorTile : NSObject 
 @property (nonatomic) UIColor *tileColor;
 
 @property (nonatomic) CGPoint tileOrigin;
 
-- (instancetype)initWithColorAndPoint: (UIColor *)color point:(CGPoint)point;
+//- (instancetype)initWithColorAndPoint: (UIColor *)color point:(CGPoint)point;
 
 @end
 

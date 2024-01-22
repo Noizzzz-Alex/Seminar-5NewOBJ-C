@@ -24,7 +24,6 @@
     label.layer.borderColor = [UIColor.blackColor CGColor];
     label.textColor = [UIColor blackColor];
     label.numberOfLines = 0;
-    //    label.lineBreakMode = NSLineBreakByWordWrapping;
     label.adjustsFontSizeToFitWidth = YES;
     return label;
 }
@@ -43,6 +42,7 @@
 + (UITextField *)createCustomTextFieldWithText:(NSString *)textField {
     UITextField *text = [UITextField new];
     text.placeholder = textField;
+    text.textAlignment = NSTextAlignmentCenter;
     text.translatesAutoresizingMaskIntoConstraints = NO;
     text.backgroundColor = [UIColor lightGrayColor];
     text.layer.borderWidth = 2;
@@ -55,6 +55,8 @@
     UILabel *label = [UILabel new];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     label.backgroundColor = [UIColor whiteColor];
+    label.layer.borderWidth = 2;
+    label.layer.borderColor = [UIColor.blackColor CGColor];
     return label;
 }
 

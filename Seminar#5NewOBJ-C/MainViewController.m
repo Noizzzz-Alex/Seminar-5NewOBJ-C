@@ -7,7 +7,6 @@
 
 #import "CreatorUIObjects.h"
 #import "MainViewController.h"
-#import "SecondViewController.h"
 #import "ColorTile.h"
 
 
@@ -28,55 +27,42 @@
 //MARK: Life cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.userDefaults = [NSUserDefaults standardUserDefaults];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.loader = [Loader new];
-    self.label = [CreatorUIObjects createCustomLabelWithText:@"THE REQUEST WILL BE DISPLAYED HERE"];
-    self.button = [CreatorUIObjects createCustomButtonWithText:@"GO TO POST REQUEST"];
-    [self.button addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    self.labelFlag = [CreatorUIObjects createCustomLabelFlag];
+    self.buttonSaveToUserDefaults = [CreatorUIObjects createCustomButtonWithText:@"Save Data"];
+    self.buttonSaveToFile = [CreatorUIObjects createCustomButtonWithText:@"Save Data To File"];
+    self.textField = [CreatorUIObjects createCustomTextFieldWithText:@"Example Text"];
+    [self.buttonSaveToUserDefaults addTarget:self action:@selector(buttonSaveToFileTapped) forControlEvents:UIControlEventTouchUpInside];
     [self setupConstraintsAndSubViews];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *urlPath = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
-    NSURL *folderURL = [urlPath URLByAppendingPathComponent:@"newFolder"];
-    NSURL *pathOfData = [folderURL URLByAppendingPathComponent:@"data.txt"];
-    NSData *data = [@"String in file" dataUsingEncoding:kCFStringEncodingUTF8];
-    
-    if ([fileManager createDirectoryAtURL:folderURL withIntermediateDirectories:YES attributes:nil error:nil]) {
-        [fileManager createFileAtPath:pathOfData.path contents:data attributes:nil];
-    }
-    if ([fileManager fileExistsAtPath:pathOfData.path ]){
-        NSData *tempData = [fileManager contentsAtPath:pathOfData.path];
-        NSString *tempString = [[NSString alloc]initWithData:tempData encoding:kCFStringEncodingUTF8];
-        NSLog(@"%@", tempString);
-        
-        if([fileManager removeItemAtPath:pathOfData.path error:nil]){
-            NSLog(@"file is removed");
-        };
-    }
+//    [self gestureActive];
+    self.textField.delegate = self;
     
     
     
     
-    //MARK: task#1 coding and decoding userDefaults
+    
+    //MARK: task#1 save data in userDefaults
 //    NSLog(@"%s",__PRETTY_FUNCTION__);
 //    [self.userDefaults setInteger:42 forKey:@"forty-two"];
 //    [self.userDefaults setDouble:2.7484342342848 forKey:@"double-number"];
 //    [self.userDefaults setFloat:3.14152322 forKey:@"float-number"];
 //    [self.userDefaults setObject:@"Simple" forKey:@"example-string"];
     
+    
+    //MARK: task#1 coding and decoding userDefaults
 //    CGPoint point = CGPointMake(10, 10);
 //    UIColor *pointColor = [UIColor systemRedColor];
 //    ColorTile *colorTile = [[ColorTile alloc]initWithColorAndPoint:pointColor  point:point ];
 //    NSData *tileData = [NSKeyedArchiver archivedDataWithRootObject:colorTile requiringSecureCoding:NO error:nil];
 //    [self.userDefaults setObject:tileData forKey:@"tile"];
-//     
+//
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self performLoadingForGetRequest];
-    [self performLoadingForPostRequest];
+
     
     
     
@@ -103,6 +89,59 @@
 
 
 
+//-(void)gestureActive{
+//    UIGestureRecognizer *tapGesture = [[UIGestureRecognizer alloc]initWithTarget:self action:@selector(tappedTextField)];
+//    [self.view addGestureRecognizer:tapGesture];
+//}
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    [textField becomeFirstResponder];
+}
+
+//MARK: Actions Tapped
+
+-(void)buttonSaveToFileTapped{
+//    [self saveDataToFile:@""];
+   
+}
+- (void)buttonSaveToUserDefaultsTapped {
+}
+
+//-(void)tappedTextField{
+//    [self.textField becomeFirstResponder];
+//}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
+}
+
+
+//MARK: Action to Save
+- (void)saveDataToUserDefaults {
+}
+
+-(void)saveDataToFile:(NSString*)fileName{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *urlPath = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    NSURL *folderURL = [urlPath URLByAppendingPathComponent:@"newFolder"];
+    NSURL *pathOfData = [folderURL URLByAppendingPathComponent:@"data.txt"];
+    NSData *data = [@"String in file" dataUsingEncoding:kCFStringEncodingUTF8];
+    
+    if ([fileManager createDirectoryAtURL:folderURL withIntermediateDirectories:YES attributes:nil error:nil]) {
+        [fileManager createFileAtPath:pathOfData.path contents:data attributes:nil];
+    }
+    if ([fileManager fileExistsAtPath:pathOfData.path ]){
+        NSData *tempData = [fileManager contentsAtPath:pathOfData.path];
+        NSString *tempString = [[NSString alloc]initWithData:tempData encoding:kCFStringEncodingUTF8];
+        NSLog(@"%@", tempString);
+        
+        if([fileManager removeItemAtPath:pathOfData.path error:nil]){
+            NSLog(@"file is removed");
+        };
+    }
+}
+
 //метод удаления данных из юзер дефортс
 -(void)resetDefaults{
     NSDictionary *dict = [self.userDefaults dictionaryRepresentation];
@@ -114,41 +153,50 @@
 
 
 
-
-//MARK: Actions
-
--(void)buttonTapped{
-    UIViewController *next = [[SecondViewController alloc]init];
-    [self.navigationController pushViewController:next animated:YES];
-}
-
-
-
-
 //MARK: Constraints
 - (void)setupConstraintsAndSubViews {
-    [self.view addSubview:self.label];
-    [self.view addSubview:self.button];
+    [self.view addSubview:self.labelFlag];
+    [self.view addSubview:self.buttonSaveToUserDefaults];
+    [self.view addSubview:self.buttonSaveToFile];
+    [self.view addSubview:self.textField];
 
     [NSLayoutConstraint activateConstraints:@[
-         //MARK: Constraints label
-         [self.label.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor
+         //MARK: Constraints labelFlag
+         [self.labelFlag.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor
                                               constant:30],
-         [self.label.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor
+         [self.labelFlag.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor
                                                   constant:10],
-         [self.label.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor
+         [self.labelFlag.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor
                                                    constant:-10],
-         [self.label.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-100],
+         [self.labelFlag.heightAnchor constraintEqualToConstant:30],
+         
+         
+         //MARK: Constraints textField
+         [self.textField.topAnchor constraintEqualToAnchor:self.labelFlag.bottomAnchor constant:50],
+         [self.textField.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor
+                                                  constant:10],
+         [self.textField.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor
+                                                   constant:-10],
+         [self.textField.heightAnchor constraintEqualToConstant:200],
 
 
-         //MARK: Constraints button
-         [self.button.topAnchor constraintEqualToAnchor:self.label.bottomAnchor
+         //MARK: Constraints buttonSaveToUserDefaults
+         [self.buttonSaveToUserDefaults.topAnchor constraintEqualToAnchor:self.textField.bottomAnchor
                                                constant:50],
-         [self.button.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor
+         [self.buttonSaveToUserDefaults.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor
                                                    constant:50],
-         [self.button.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor
+         [self.buttonSaveToUserDefaults.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor
                                                     constant:-50],
-         [self.button.heightAnchor constraintEqualToConstant:30]
+         [self.buttonSaveToUserDefaults.heightAnchor constraintEqualToConstant:30],
+         
+         //MARK: Constraints buttonSaveToFile
+         [self.buttonSaveToFile.topAnchor constraintEqualToAnchor:self.buttonSaveToUserDefaults.bottomAnchor
+                                               constant:50],
+         [self.buttonSaveToFile.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor
+                                                   constant:50],
+         [self.buttonSaveToFile.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor
+                                                    constant:-50],
+         [self.buttonSaveToFile.heightAnchor constraintEqualToConstant:30]
 
     ]];
 }
@@ -156,33 +204,5 @@
 
 
 
-
-//MARK: Network requests
-- (void)performLoadingForGetRequest {
-    [self.loader performGetRequestFromURL:@"https://postman-echo.com/get"
-                                arguments:@{ @"var1": @"first", @"var2": @"second" }
-                                    block:^(NSDictionary *dict, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-                           if (error) {
-                               NSLog(@"Error: %@", error);
-                               return;
-                           }
-                           self.label.text = [dict description];
-                       });
-    }];
-}
-
-- (void)performLoadingForPostRequest {
-    [self.loader performPostRequestFromURL:@"https://postman-echo.com/post"
-                                 arguments:@{ @"var1": @"first", @"var2": @"second" }
-                                     block:^(NSDictionary *dict, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-                           if (error) {
-                               NSLog(@"Error: %@", error);
-                               return;
-                           }
-                       });
-    }];
-}
 
 @end

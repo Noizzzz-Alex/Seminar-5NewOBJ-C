@@ -5,11 +5,17 @@
 //  Created by Александр Харлампов on 22.01.2024.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Robot : NSObject
+@interface Robot : NSObject <NSCoding>
+
+@property (nonatomic) NSString *name;
+@property (nonatomic) CGPoint coords;
+
+- (instancetype)initWithNameAndCoords:(NSString*)name coords:(CGPoint)coords;
+
 
 @end
 
