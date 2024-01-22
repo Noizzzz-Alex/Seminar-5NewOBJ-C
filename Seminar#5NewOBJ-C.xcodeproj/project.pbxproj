@@ -16,6 +16,7 @@
 		108DA17D2B55C4CC00CB04D9 /* Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DA17C2B55C4CC00CB04D9 /* Loader.m */; };
 		108DA1802B56D0EC00CB04D9 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DA17F2B56D0EC00CB04D9 /* SecondViewController.m */; };
 		108DA1832B56E34C00CB04D9 /* CreatorUIObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DA1822B56E34C00CB04D9 /* CreatorUIObjects.m */; };
+		10C6414F2B5EAA1400275470 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C6414E2B5EAA1400275470 /* Robot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		108DA17F2B56D0EC00CB04D9 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		108DA1812B56E34C00CB04D9 /* CreatorUIObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatorUIObjects.h; sourceTree = "<group>"; };
 		108DA1822B56E34C00CB04D9 /* CreatorUIObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatorUIObjects.m; sourceTree = "<group>"; };
+		10C6414D2B5EAA1400275470 /* Robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
+		10C6414E2B5EAA1400275470 /* Robot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				108DA1822B56E34C00CB04D9 /* CreatorUIObjects.m */,
 				108DA1692B55C4AE00CB04D9 /* MainViewController.m */,
 				103D81A32B5D7554004C4065 /* ColorTile.h */,
+				10C6414D2B5EAA1400275470 /* Robot.h */,
+				10C6414E2B5EAA1400275470 /* Robot.m */,
 				103D81A42B5D7554004C4065 /* ColorTile.m */,
 				108DA17E2B56D0EC00CB04D9 /* SecondViewController.h */,
 				108DA17F2B56D0EC00CB04D9 /* SecondViewController.m */,
@@ -164,6 +169,7 @@
 				108DA16A2B55C4AE00CB04D9 /* MainViewController.m in Sources */,
 				108DA1642B55C4AE00CB04D9 /* AppDelegate.m in Sources */,
 				108DA1752B55C4AF00CB04D9 /* main.m in Sources */,
+				10C6414F2B5EAA1400275470 /* Robot.m in Sources */,
 				108DA1672B55C4AE00CB04D9 /* SceneDelegate.m in Sources */,
 				108DA17D2B55C4CC00CB04D9 /* Loader.m in Sources */,
 			);
