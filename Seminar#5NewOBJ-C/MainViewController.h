@@ -6,12 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Loader.h"
-//#import "ColorTile.h"
+#import "UserDefaults.h"
 
 @interface MainViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate>
 
-
+//@property (nonatomic) UserDefaults *userDefaults;
 @property (nonatomic, strong) UILabel *labelFlag;
 @property (nonatomic, strong) UIButton *buttonSaveToUserDefaults;
 @property (nonatomic, strong) UIButton *buttonSaveToFile;
@@ -20,8 +19,7 @@
 -(void)buttonSaveToFileTapped;
 -(void)buttonSaveToUserDefaultsTapped;
 
--(void)saveDataToUserDefaults;
--(void)saveDataToFile:(NSString*)fileName;
+
 
 @end
 
