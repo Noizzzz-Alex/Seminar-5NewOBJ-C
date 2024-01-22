@@ -9,7 +9,7 @@
 #import "Loader.h"
 //#import "ColorTile.h"
 
-@interface MainViewController : UIViewController <UITextFieldDelegate>
+@interface MainViewController : UIViewController <UITextFieldDelegate, UIScrollViewDelegate>
 
 
 @property (nonatomic, strong) UILabel *labelFlag;

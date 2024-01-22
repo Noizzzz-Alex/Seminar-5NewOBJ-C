@@ -89,15 +89,7 @@
 
 
 
-//-(void)gestureActive{
-//    UIGestureRecognizer *tapGesture = [[UIGestureRecognizer alloc]initWithTarget:self action:@selector(tappedTextField)];
-//    [self.view addGestureRecognizer:tapGesture];
-//}
 
-
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    [textField becomeFirstResponder];
-}
 
 //MARK: Actions Tapped
 
@@ -108,12 +100,29 @@
 - (void)buttonSaveToUserDefaultsTapped {
 }
 
-//-(void)tappedTextField{
-//    [self.textField becomeFirstResponder];
-//}
 
+//MARK: Action TextField
 -(void)textFieldDidEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];   //скрыть клаву при редактировании
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    [textField becomeFirstResponder];   //показать клаву при редактировании
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    textField.backgroundColor = [UIColor lightGrayColor];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    textField.backgroundColor = [UIColor yellowColor];
+    textField.placeholder = @"Enter request";
+    return YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES]; // Скрыть клавиатуру при прокрутке
 }
 
 
