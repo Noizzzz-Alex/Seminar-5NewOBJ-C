@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103D81A52B5D7554004C4065 /* ColorTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 103D81A42B5D7554004C4065 /* ColorTile.m */; };
 		108DA1642B55C4AE00CB04D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DA1632B55C4AE00CB04D9 /* AppDelegate.m */; };
 		108DA1672B55C4AE00CB04D9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DA1662B55C4AE00CB04D9 /* SceneDelegate.m */; };
 		108DA16A2B55C4AE00CB04D9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 108DA1692B55C4AE00CB04D9 /* MainViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		103D81A32B5D7554004C4065 /* ColorTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorTile.h; sourceTree = "<group>"; };
+		103D81A42B5D7554004C4065 /* ColorTile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTile.m; sourceTree = "<group>"; };
 		108DA15F2B55C4AE00CB04D9 /* Seminar#5NewOBJ-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seminar#5NewOBJ-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		108DA1622B55C4AE00CB04D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		108DA1632B55C4AE00CB04D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +77,8 @@
 				108DA1812B56E34C00CB04D9 /* CreatorUIObjects.h */,
 				108DA1822B56E34C00CB04D9 /* CreatorUIObjects.m */,
 				108DA1692B55C4AE00CB04D9 /* MainViewController.m */,
+				103D81A32B5D7554004C4065 /* ColorTile.h */,
+				103D81A42B5D7554004C4065 /* ColorTile.m */,
 				108DA17E2B56D0EC00CB04D9 /* SecondViewController.h */,
 				108DA17F2B56D0EC00CB04D9 /* SecondViewController.m */,
 				108DA16E2B55C4AF00CB04D9 /* Assets.xcassets */,
@@ -153,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103D81A52B5D7554004C4065 /* ColorTile.m in Sources */,
 				108DA1802B56D0EC00CB04D9 /* SecondViewController.m in Sources */,
 				108DA1832B56E34C00CB04D9 /* CreatorUIObjects.m in Sources */,
 				108DA16A2B55C4AE00CB04D9 /* MainViewController.m in Sources */,
