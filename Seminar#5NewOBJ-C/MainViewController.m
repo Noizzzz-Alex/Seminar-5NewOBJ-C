@@ -29,6 +29,22 @@
     self.textField.delegate = self;
 }
 
+
+
+//MARK: class helper methods
+- (void)setupUIObjectsAndAction {
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.labelFlag = [CreatorUIObjects createCustomLabelFlag];
+    self.buttonSaveToUserDefaults = [CreatorUIObjects createCustomButtonWithText:@"Save Data"];
+    self.buttonSaveToFile = [CreatorUIObjects createCustomButtonWithText:@"Save Data To File"];
+    self.textField = [CreatorUIObjects createCustomTextFieldWithText:@"Example Text"];
+    [self.buttonSaveToUserDefaults addTarget:self
+                                      action:@selector(buttonSaveToUserDefaultsTapped)
+                            forControlEvents:UIControlEventTouchUpInside];
+    [self.buttonSaveToFile addTarget:self
+                              action:@selector(buttonSaveToFileTapped)
+                    forControlEvents:UIControlEventTouchUpInside];
+}
 - (NSArray *)SeparatedString:(NSString *)text {
     if (text && text.length > 0) {
         // Разделение строки с запятой в качестве разделителя
@@ -48,8 +64,9 @@
     self.labelFlag.backgroundColor = [UIColor systemRedColor];
 }
 
-//MARK: Actions Tapped
 
+
+//MARK: Actions Button Tapped
 - (void)buttonSaveToFileTapped {
     NSURL *path = [DataSaverToFile saveDataToFile:[self SeparatedString:self.textField.text.copy]];
 
@@ -73,8 +90,9 @@
     }
 }
 
-//MARK: Action TextField
 
+
+//MARK: Methods TextFiledDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [textField resignFirstResponder];
     textField.backgroundColor = [UIColor lightGrayColor];
@@ -95,6 +113,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.view endEditing:YES]; // Скрыть клавиатуру при прокрутке
 }
+
+
 
 //MARK: Constraints
 - (void)setupConstraintsAndSubViews {
@@ -145,18 +165,6 @@
     ]];
 }
 
-- (void)setupUIObjectsAndAction {
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.labelFlag = [CreatorUIObjects createCustomLabelFlag];
-    self.buttonSaveToUserDefaults = [CreatorUIObjects createCustomButtonWithText:@"Save Data"];
-    self.buttonSaveToFile = [CreatorUIObjects createCustomButtonWithText:@"Save Data To File"];
-    self.textField = [CreatorUIObjects createCustomTextFieldWithText:@"Example Text"];
-    [self.buttonSaveToUserDefaults addTarget:self
-                                      action:@selector(buttonSaveToUserDefaultsTapped)
-                            forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonSaveToFile addTarget:self
-                              action:@selector(buttonSaveToFileTapped)
-                    forControlEvents:UIControlEventTouchUpInside];
-}
+
 
 @end
